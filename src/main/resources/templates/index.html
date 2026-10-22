@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap Tile - Home</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <h1>🎹 TAP TILE</h1>
+  <div class="sub">Tap only the black tiles. Don't miss any!</div>
+
+  <div class="card">
+    <form th:action="@{/play}" method="get">
+      <label for="name">Player Name</label>
+      <input type="text" id="name" name="name" maxlength="20" placeholder="Enter your name" required>
+
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty" name="difficulty">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+
+      <button type="submit" class="btn">Start Game</button>
+    </form>
+  </div>
+
+  <div class="links">
+    <a th:href="@{/leaderboard}">🏆 View Leaderboard</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap Tile - Leaderboard</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <h1>🏆 Top 10 Leaderboard</h1>
+  <div class="sub">Best players of Tap Tile</div>
+
+  <table th:if="${!scores.isEmpty()}">
+    <thead>
+      <tr><th>Rank</th><th>Name</th><th>Score</th><th>Difficulty</th><th>Date</th></tr>
+    </thead>
+    <tbody>
+      <tr th:each="s, st : ${scores}" th:classappend="${st.first} ? 'gold'">
+        <td th:text="${st.count}">1</td>
+        <td th:text="${s.playerName}">Name</td>
+        <td th:text="${s.score}">0</td>
+        <td th:text="${s.difficulty}">Easy</td>
+        <td th:text="${s.createdDateFormatted}">date</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="empty" th:if="${scores.isEmpty()}">No scores yet. Be the first to play!</div>
+
+  <div>
+    <a class="btn" th:href="@{/}">Play Again</a>
+  </div>
+</body>
+</html>

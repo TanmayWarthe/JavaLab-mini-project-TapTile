@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap Tile - Play</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <h1>🎹 TAP TILE</h1>
+  <div class="hud">
+    <span>👤 <b th:text="${name}">Player</b></span>
+    <span>⚡ <b th:text="${difficulty}">Easy</b></span>
+    <span>Score: <b id="score">0</b></span>
+  </div>
+
+  <div id="wrap">
+    <canvas id="game" width="400" height="600"></canvas>
+
+    <div id="overlay">
+      <h2 id="ovTitle">Ready?</h2>
+      <p id="ovMsg">Tap black tiles or press D F J K keys.</p>
+      <button class="btn" id="startBtn">Start</button>
+      <div id="endLinks" class="hidden">
+        <a class="btn blue" th:href="@{/leaderboard}">Leaderboard</a>
+        <a class="btn grey" th:href="@{/}">Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script th:inline="javascript">
+    const PLAYER = /*[[${name}]]*/ 'Player';
+    const DIFFICULTY = /*[[${difficulty}]]*/ 'Easy';
+    const SAVE_URL = /*[[@{/scores}]]*/ '/scores';
+  </script>
+  <script th:src="@{/js/game.js}"></script>
+</body>
+</html>
